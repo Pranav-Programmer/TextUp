@@ -239,7 +239,14 @@ else{
         <div style={{backgroundColor:'#d8e7f5', borderRadius:'10px', height:'13rem'}}>
             <img src={TextUp} alt='Logo' style={{width:'6rem', height:'6rem', margin:'1rem 0 0 0'}}></img>
             <div>
-              {avg !== 'NaN' ? <div style={{display:'flex', flexDirection:'row', gap:'.5rem', marginLeft:'9.6rem', marginBottom:'-2rem'}}><h5 style={{color:'gray', fontSize:'1.5rem'}}>{avg}</h5><StarIcon style={{color:'gold', fontSize:'2.1rem', marginTop:'2.2rem'}}/></div> : loader}
+              {avg !== 'NaN' ? (
+              <div style={{ display: 'flex', alignItems: 'center', marginLeft: '9.6rem' }}>
+                <h5 style={{ color: 'gray', fontSize: '1.2rem', marginRight: '.5rem' }}>
+                  {avg}
+                </h5>
+                <StarIcon style={{ color: 'goldenrod', fontSize: '1.8rem' }} />
+              </div>
+            ) : loader}
             </div>
             <div style={{paddingTop:'2rem'}}>
           {isLoading ? (
