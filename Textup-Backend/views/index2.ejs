@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="shortcut icon" type="image/x-icon" href="./TextUp.png">
+    <style>
+
+input {
+  caret-color: red;
+}
+
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ecf0f3;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  overflow: hidden;
+  font-family: poppins;
+}
+
+.container {
+  position: relative;
+  width: 350px;
+  height: 18rem;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #85a19e;
+  box-shadow: 0px 0px 8px 8px #cbced1; 
+}
+
+.inner-container {
+  margin-top: 2rem;
+}
+
+.brand-title {
+  margin-top: 2rem;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #ecf0f3;
+  letter-spacing: 1px;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}
+
+label, input, button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+  color: white;
+  margin-top: 20px;
+  background: #4663be;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  transition: 0.5s;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+a {
+  position: absolute;
+  font-size: 8px;
+  bottom: 4px;
+  right: 4px;
+  text-decoration: none;
+  color: black;
+  background: yellow;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+h4 {
+  position: absolute;
+  top: 0;
+  left: 10;
+}
+
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TextUp</title>
+    <script>
+      var status = '<%- JSON.stringify(status) %>';
+
+      if (JSON.parse(status) == "verified") {
+        {
+          alert("Your email successfully updated");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        <h4><%= email%></h4>
+        <div class="inner-container">
+        <form action="" method="post">
+
+        
+        <div class="inputs">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+          />
+          <label>Confirm Email</label>
+          <input
+            type="email"
+            name="confirm-email"
+            id="confirm-email"
+            placeholder="Confirm Email"
+          />
+          <button type="submit">Change Email</button>
+        </div>
+      </div>
+    </form>
+    <div class="brand-title">TextUp</div>
+</div>
+  </body>
+</html>
