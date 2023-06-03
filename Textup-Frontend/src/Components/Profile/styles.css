@@ -1,0 +1,92 @@
+.container {
+    margin: auto;
+    padding: 20px;
+    max-width: 600px;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+
+  td{
+    overflow: hidden; 
+    text-overflow: ellipsis;
+  }
+  
+  th {
+    background-color: #4285f4;
+    color: #fff;
+  }
+  
+  tbody {
+    display: block;
+    overflow-y: scroll;
+    height: 100%; /* set the height of the table body */
+  }
+  
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    position: sticky; /* set the header to be sticky */
+    top: 56px;
+    margin-top: 2.5rem;
+    background-color: #f1f1f1;
+  }
+  
+  thead th:first-child {
+    position: sticky; /* make the first column sticky in the header */
+    left: 0;
+    z-index: 1;
+    background-color: #4285f4;
+  }
+  
+  tbody td:first-child {
+    position: sticky; /* make the first column sticky in the rows */
+    left: 0;
+    z-index: -1;
+    background-color: #fff;
+  }
+  
+  
+  @media (max-width: 600px) {
+    table {
+      font-size: 0.8rem;
+    }
+  
+    th,
+    td {
+      padding: 18px;
+    }
+  
+    th {
+      font-size: 0.9rem;
+    }
+  
+    td:first-of-type,
+    th:first-of-type {
+      padding-left: 15px;
+    }
+  
+    td:last-of-type,
+    th:last-of-type {
+      padding-right: 15px;
+    }
+    
+  }
+  
