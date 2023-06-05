@@ -127,18 +127,6 @@ function Home(props) {
       };
     }, []);
 
-  const [links, setLinks] = useState([]);
-
-  const handleAddLink = () => {
-    setLinks([...links, '']);
-  };
-
-  const handleLinkChange = (index, value) => {
-    const updatedLinks = [...links];
-    updatedLinks[index] = value;
-    setLinks(updatedLinks);
-  };
-
   return (
     <div>
     <Stack direction="row" spacing={0} style={{position:'fixed' ,width:'100%', backgroundColor:'#fff'}}>
@@ -198,21 +186,7 @@ function Home(props) {
           width: '100%',
           height: '48vh'
         }}></textarea>
-      {links.map((link, index) => (
-            <Box key={index} display="flex" alignItems="center">
-              <TextareaAutosize
-                rowsMin={3}
-                placeholder="Enter link..."
-                value={link}
-                onChange={(e) => handleLinkChange(index, e.target.value)}
-              />
-              {index === links.length - 1 && (
-                <Button variant="contained" color="primary" onClick={handleAddLink}>
-                  +
-                </Button>
-              )}
-            </Box>
-          ))}
+      <textarea id='form4Example1' name="link" onChange={handleNewContentChange} placeholder='Link' rows="2" style={{ fontSize: '1.2rem', margin: '1rem -1rem', borderTop: 'none', width: '100%' }}></textarea>
       <Stack spacing={2} direction="row" style={{display:'flex', margin:'1rem'}}>
       <Button type='submit' variant="contained" style={{ flex: 1, borderRadius: '.5rem', backgroundColor: 'DodgerBlue', margin: '0 0 0 -1.5rem', fontSize:'1rem' }}>ADD</Button>
     </Stack>
