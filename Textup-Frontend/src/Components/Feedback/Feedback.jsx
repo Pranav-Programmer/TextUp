@@ -239,7 +239,7 @@ else{
         <div style={{backgroundColor:'#d8e7f5', borderRadius:'10px', height:'13rem'}}>
             <img src={TextUp} alt='Logo' style={{width:'6rem', height:'6rem', margin:'1rem 0 0 0'}}></img>
             <div>
-              {avg !== 'NaN' ? (
+            {avg !== 'NaN' ? (
               <div style={{ display: 'flex', alignItems: 'center', marginLeft: '9.6rem' }}>
                 <h5 style={{ color: 'gray', fontSize: '1.2rem', marginRight: '.5rem' }}>
                   {avg}

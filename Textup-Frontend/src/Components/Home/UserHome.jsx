@@ -21,8 +21,9 @@ import axios from 'axios';
 import { format } from 'date-fns';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import IconButton from '@material-ui/core/IconButton';
-import load from '../../img/load.gif'
-import CTA from './CTA'
+import load from '../../img/load.gif';
+import CTA from './CTA';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -206,7 +207,7 @@ let i = 0;
 
   const handleOpenModal = (_id) => {
     setOpenModalIndex(_id);
-    setShowInput(false);
+    setShowInput(false);    
   };
 
   const handleCloseModal = () => {
@@ -268,7 +269,7 @@ let i = 0;
 
     try {
       const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/Your_Cloudinary_Cloud_Name/image/upload',
+        'https://api.cloudinary.com/v1_1/dwdkxrsrw/image/upload',
         formData
       );
 
@@ -420,13 +421,13 @@ let i = 0;
       </div>
       <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
     
-    {logged && notesData.length === 0 && (
+    {notesData.length === 0 && (
   <div style={{textAlign:'centre' ,borderRadius:'1rem', width:'90%', minWidth:'21rem', transform: 'translateY(30vh)', color:'GrayText'}}>
     {showQuote ? CTA[val].content : loader}
   </div>
 )}
 </div>
-        {logged && notesData.length > 0 && (
+        {notesData.length > 0 && (
   <div style={{display: 'flex', flexDirection: 'column-reverse', gap:'.5rem'}}>
     {logged && notesData.filter(notes =>{
   if ((notes.heading?.toLowerCase().includes(query.toLowerCase()) || notes.description?.toLowerCase().includes(query.toLowerCase()))) {
@@ -454,7 +455,7 @@ let i = 0;
               )
             )}
         </p>
-        {content.link && ((<a href={content.link} target="_blank" rel="noreferrer" style={{textAlign:'justify', textOverflow:'ellipsis', overflow:'hidden', whiteSpace:'nowrap', fontWeight:'bold', color:'Blue', textDecoration:'none'}}>Link</a>))}
+        {content.link && ((<a href={content.link.split('\n')[0]} target="_blank" rel="noreferrer" style={{textAlign:'justify', textOverflow:'ellipsis', overflow:'hidden', whiteSpace:'nowrap', fontWeight:'bold', color:'Blue', textDecoration:'none'}}>Link</a>))}
         </div>
         <div className='Right' style={{height:'7rem'}}>
         {content.image ? <img src={content.image} alt="File Uploaded" onClick={() => handleOpenModal(_id)} style={{width:'5rem', height:'5rem', padding:'.3rem', cursor:'pointer'}}/> : <img src={Default} alt="File Uploaded" onClick={() => handleOpenModal(_id)} style={{width:'5rem', height:'5rem', padding:'.3rem', cursor:'pointer'}}/>}
@@ -506,7 +507,11 @@ let i = 0;
               )
             )}
         </p>
-            <a href={content.link} target="_blank" rel="noreferrer" style={{textAlign: 'justify', fontWeight: 'bold', color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{content.link}</a>
+            {
+              content.link.split('\n').map((link)=> {
+                return <a href={link} target="_blank" rel="noreferrer" style={{left: 0, color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{link}</a>
+              })
+            }
             <div style={{textAlign: 'center'}}>
             <Button variant="outlined" size="small" onClick={() => setSelectedContentIndex(_id)} style={{marginTop:'1rem'}}>Edit</Button>
             </div>

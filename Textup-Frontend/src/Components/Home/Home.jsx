@@ -19,6 +19,7 @@ import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 import CTA from './CTA'
+import {TextareaAutosize } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -126,6 +127,18 @@ function Home(props) {
       };
     }, []);
 
+  const [links, setLinks] = useState([]);
+
+  const handleAddLink = () => {
+    setLinks([...links, '']);
+  };
+
+  const handleLinkChange = (index, value) => {
+    const updatedLinks = [...links];
+    updatedLinks[index] = value;
+    setLinks(updatedLinks);
+  };
+
   return (
     <div>
     <Stack direction="row" spacing={0} style={{position:'fixed' ,width:'100%', backgroundColor:'#fff'}}>
@@ -185,7 +198,21 @@ function Home(props) {
           width: '100%',
           height: '48vh'
         }}></textarea>
-      <textarea id='form4Example1' name="link" onChange={handleNewContentChange} placeholder='Link' rows="2" style={{ fontSize: '1.2rem', margin: '1rem -1rem', borderTop: 'none', width: '100%' }}></textarea>
+      {links.map((link, index) => (
+            <Box key={index} display="flex" alignItems="center">
+              <TextareaAutosize
+                rowsMin={3}
+                placeholder="Enter link..."
+                value={link}
+                onChange={(e) => handleLinkChange(index, e.target.value)}
+              />
+              {index === links.length - 1 && (
+                <Button variant="contained" color="primary" onClick={handleAddLink}>
+                  +
+                </Button>
+              )}
+            </Box>
+          ))}
       <Stack spacing={2} direction="row" style={{display:'flex', margin:'1rem'}}>
       <Button type='submit' variant="contained" style={{ flex: 1, borderRadius: '.5rem', backgroundColor: 'DodgerBlue', margin: '0 0 0 -1.5rem', fontSize:'1rem' }}>ADD</Button>
     </Stack>
@@ -233,7 +260,7 @@ function Home(props) {
               )
             )}
         </p>
-        {content.link && ((<a href={content.link} target="_blank" rel="noreferrer" style={{textAlign:'justify', textOverflow:'ellipsis', overflow:'hidden', whiteSpace:'nowrap', fontWeight:'bold', color:'Blue', textDecoration:'none'}}>Link</a>))}
+        {content.link && ((<a href={content.link.split('\n')[0]} target="_blank" rel="noreferrer" style={{textAlign:'justify', textOverflow:'ellipsis', overflow:'hidden', whiteSpace:'nowrap', fontWeight:'bold', color:'Blue', textDecoration:'none'}}>Link</a>))}
         </div>
         <div className='Right'>
         <img src={P1} alt="File Uploaded" onClick={() => handleOpenModal(contentLength - index - 1)} style={{width:'5rem', height:'5rem', padding:'.3rem', cursor:'pointer'}}/>
@@ -261,7 +288,11 @@ function Home(props) {
               )
             )}
         </p>
-            <a href={content.link} target="_blank" rel="noreferrer" style={{textAlign: 'justify', fontWeight: 'bold', color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{content.link}</a>
+           {
+              content.link.split('\n').map((link)=> {
+                return <a href={link} target="_blank" rel="noreferrer" style={{left: 0, color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{link}</a>
+              })
+            }
             <div style={{textAlign: 'center'}}>
             <Button variant="outlined" size="small" onClick={() => setSelectedContentIndex(contentLength - index - 1)} style={{marginTop:'1rem'}}>Edit</Button>
             </div>
