@@ -67,7 +67,7 @@ Replace the values 'Your MongoDB URI', 'Your Cloudinary Cloud Name', 'Your Cloud
       service: "gmail",
       auth: {
         user: "Your email address through which you created account on nodemailer",
-        pass: "Your email address password",  //create temporary password, do not use your actual password for safety
+        pass: "Your email address password",  //create temporary password, don't use your actual password to ensure safety
       },
     });
 
