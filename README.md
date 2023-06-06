@@ -104,14 +104,32 @@ Replace the values 'Your MongoDB URI', 'Your Cloudinary Cloud Name', 'Your Cloud
 ### Frontend Setup
 
 1. Open the Textup-Frontend folder in your code editor.
-2. Open a terminal or command prompt.
-3. Navigate to the Textup-Frontend folder.
-4. Run the following command to install the project's dependencies:
+2. Inside Textup-Frontend folder Open file 'UserHome.jsx' which is located inside 'src\Components\Home' folder.
+3. Locate the following code snippet in the 'UserHome.js' file: 
+
+```bash
+    try {
+      const res = await axios.post(
+        'https://api.cloudinary.com/v1_1/Your_Cloudinary_Cloud_Name/image/upload',
+        formData
+      );
+
+      setImage(res.data.secure_url);
+      setPid(res.data.secure_url.substring(res.data.secure_url.lastIndexOf('/') + 1, res.data.secure_url.lastIndexOf('.')))
+    } catch (err) {
+      console.error(err);
+    }};
+```
+4. Update the Cloudinary configuration by replacing the placeholders with your Your_Cloudinary_Cloud_Name. Modify the code snippet mentioned in step 3 on the line 272
+
+5. Open a terminal or command prompt.
+6. Navigate to the Textup-Frontend folder.
+7. Run the following command to install the project's dependencies:
 
 ```bash
   npm install
 ```
-5. Start the frontend development server by running the following command:
+8. Start the frontend development server by running the following command:
 
 ```bash
   npm start
