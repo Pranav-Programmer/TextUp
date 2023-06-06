@@ -35,7 +35,7 @@ export default function UserHome(props) {
   const [userData, setUserData] = useState("");
   const [logged, setLogged] = useState(true)
         useEffect(() => {
-          fetch("https://textup-backend.onrender.com/userData", {
+          fetch("http://localhost:5000/userData", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -58,7 +58,7 @@ export default function UserHome(props) {
     }, []);
 
           useEffect(() => {
-            fetch("https://textup-backend.onrender.com/userNotesData", {
+            fetch("http://localhost:5000/userNotesData", {
               method: "POST",
               crossDomain: true,
               headers: {
@@ -90,7 +90,7 @@ export default function UserHome(props) {
   const handleSubmit = (e) => {
       e.preventDefault();
      
-      fetch("https://textup-backend.onrender.com/upload-note", {
+      fetch("http://localhost:5000/upload-note", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -124,7 +124,7 @@ export default function UserHome(props) {
 };
 
 const updateNotesData = () => {
-  fetch("https://textup-backend.onrender.com/notesData", {
+  fetch("http://localhost:5000/notesData", {
     method: "POST",
     crossDomain: true,
     headers: {
@@ -153,7 +153,7 @@ const [notesData, setNotesData] = useState([]);
 
   // Remove Notes
   const removeNotes = (id) => {
-      fetch("https://textup-backend.onrender.com/removeNotes", {
+      fetch("http://localhost:5000/removeNotes", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -183,7 +183,7 @@ const [notesData, setNotesData] = useState([]);
       link: data.link
     };
 
-    fetch("https://textup-backend.onrender.com/notesUpdate", {
+    fetch("http://localhost:5000/notesUpdate", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -286,7 +286,7 @@ let i = 0;
 
     const deleteImage = async (imgPid) => {
       try {
-        const response = await axios.post('https://textup-backend.onrender.com/delete-image', {
+        const response = await axios.post('http://localhost:5000/delete-image', {
           public_id: imgPid // Replace with the actual public_id of the image you want to delete
         });
         setResponse(response.data); // Success message from the server

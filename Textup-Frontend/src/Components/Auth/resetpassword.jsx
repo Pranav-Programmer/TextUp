@@ -95,7 +95,7 @@ export default function Reset() {
     setIsLoading(true);
     setDone(true);
 
-    fetch("https://textup-backend.onrender.com/forgot-password", {
+    fetch("http://localhost:5000/forgot-password", {
       method: "POST",
       crossDomain: true,
       headers: {

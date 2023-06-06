@@ -13,7 +13,7 @@ function ImageUpload() {
     const formData = new FormData();
     formData.append("file", file);
     axios
-      .post("https://textup-backend.onrender.com/upload-image", formData)
+      .post("http://localhost:5000/upload-image", formData)
       .then((response) => {
       })
       .catch((error) => {

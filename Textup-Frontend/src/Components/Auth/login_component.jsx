@@ -95,7 +95,7 @@ export default function Login() {
     localStorage.removeItem("profileImage");
     setIsLoading(true);
 
-    fetch("https://textup-backend.onrender.com/login-user", {
+    fetch("http://localhost:5000/login-user", {
       method: "POST",
       crossDomain: true,
       headers: {

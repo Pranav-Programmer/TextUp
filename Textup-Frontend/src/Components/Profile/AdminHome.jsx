@@ -48,7 +48,7 @@ export default function App() {
  
    //fetching all user
    useEffect(() => {
-    fetch("https://textup-backend.onrender.com/getAllUser")
+    fetch("http://localhost:5000/getAllUser")
       .then((res) => res.json())
       .then((data) => setData(data.data))
       .catch((err) => console.log(err));
@@ -56,7 +56,7 @@ export default function App() {
  
    //deleting user
    const deleteUser = (email) => {
-    fetch("https://textup-backend.onrender.com/deleteUser", {
+    fetch("http://localhost:5000/deleteUser", {
       method: "POST",
       crossDomain: true,
       headers: {

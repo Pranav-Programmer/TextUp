@@ -99,7 +99,7 @@ function FeedbackPage() {
     e.preventDefault();
    
     if(rating !== 0 && feedback !== ''){
-    fetch("https://textup-backend.onrender.com/upload-feedback", {
+    fetch("http://localhost:5000/upload-feedback", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -146,7 +146,7 @@ else{
   const [feedbackData, setFeedbackData] = useState([]);
 
   const fetchFeedbackData = () => {
-    fetch("https://textup-backend.onrender.com/feedbackData", {
+    fetch("http://localhost:5000/feedbackData", {
       method: "GET",
       crossDomain: true,
       headers: {

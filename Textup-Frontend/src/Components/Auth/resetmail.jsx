@@ -95,7 +95,7 @@ export default function Resetmail() {
     setIsLoading(true);
     setDone(true);
 
-    fetch("https://textup-backend.onrender.com/change-email", {
+    fetch("http://localhost:5000/change-email", {
       method: "POST",
       crossDomain: true,
       headers: {

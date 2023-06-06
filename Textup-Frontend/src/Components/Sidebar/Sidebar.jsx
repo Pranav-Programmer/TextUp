@@ -22,7 +22,7 @@ import TextUp from '../../img/TextUp.png';
 export default function TemporaryDrawer({image, setImage}) {
 
   React.useEffect(() => {
-    fetch("https://textup-backend.onrender.com/userData", {
+    fetch("http://localhost:5000/userData", {
       method: "POST",
       crossDomain: true,
       headers: {

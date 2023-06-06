@@ -41,7 +41,7 @@ export default function PersonalProfile({image, setImage}) {
 
         const [userData, setUserData] = useState("");
         useEffect(() => {
-          fetch("https://textup-backend.onrender.com/userData", {
+          fetch("http://localhost:5000/userData", {
             method: "POST",
             crossDomain: true,
             headers: {
@@ -74,7 +74,7 @@ export default function PersonalProfile({image, setImage}) {
   };
 
   const deleteUser = (email) => {
-    fetch("https://textup-backend.onrender.com/deleteUser", {
+    fetch("http://localhost:5000/deleteUser", {
       method: "POST",
       crossDomain: true,
       headers: {

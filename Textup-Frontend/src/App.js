@@ -30,7 +30,7 @@ function App() {
       setImage(user); // default image path
     }
 
-    fetch("https://textup-backend.onrender.com/userData", {
+    fetch("http://localhost:5000/userData", {
       method: "POST",
       crossDomain: true,
       headers: {

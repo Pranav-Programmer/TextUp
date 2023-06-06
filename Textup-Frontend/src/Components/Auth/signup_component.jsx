@@ -107,7 +107,7 @@ export default function SignUp() {
       setDone(true);
       if(password === cpassword){
 
-      fetch("https://textup-backend.onrender.com/register", {
+      fetch("http://localhost:5000/register", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -145,7 +145,7 @@ export default function SignUp() {
   //OTP
 
   const sendotp = () => {
-    fetch("https://textup-backend.onrender.com/storeOTP", {
+    fetch("http://localhost:5000/storeOTP", {
         method: "POST",
         crossDomain: true,
         headers: {
@@ -176,7 +176,7 @@ function verifyotp(e) {
   e.preventDefault();
   setIsLoading(true);
 
-  fetch("https://textup-backend.onrender.com/verify-user", {
+  fetch("http://localhost:5000/verify-user", {
     method: "POST",
     crossDomain: true,
     headers: {
