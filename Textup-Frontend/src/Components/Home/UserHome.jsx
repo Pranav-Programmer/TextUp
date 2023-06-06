@@ -269,7 +269,7 @@ let i = 0;
 
     try {
       const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/dwdkxrsrw/image/upload',
+        'https://api.cloudinary.com/v1_1/Your_Cloudinary_Cloud_Name/image/upload',
         formData
       );
 
