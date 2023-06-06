@@ -168,6 +168,12 @@ Use the contact form on contact us page to connect with us if you have any doubt
 
 https://youtu.be/TjdRDzgr18s
 
+
+
+https://github.com/Pranav-Programmer/TextUp/assets/79044490/5361d7e2-aee6-4cc3-89a7-d314f3a291e8
+
+
+
 ## Contributing
 
 Contributions are always welcome!
