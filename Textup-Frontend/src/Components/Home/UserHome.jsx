@@ -219,7 +219,6 @@ let i = 0;
 
   const handleOpenModal2 = (_id) => {
     setOpenModalIndex2(_id);
-    setShowInput2(false);
   };
 
   const handleCloseModal2 = () => {
@@ -229,7 +228,6 @@ let i = 0;
   const [query, setQuery] = useState("")
   const [fileSize, setFileSize] = useState(null);
   const [showInput, setShowInput] = useState(false);
-  const [setShowInput2] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [setResponse] = useState("")
   const [showQuote, setShowQuote] = useState(false)
@@ -498,7 +496,7 @@ let i = 0;
 
             {content.image && <img src={content.image} alt="File Uploaded" style={{width:'15rem', height:'15rem', padding:'.3rem', marginBottom:'1rem', marginTop:'-1rem'}}/> }
             
-            <p onClick={() => handleOpenModal(_id)} style={{textAlign: 'justify', margin: '-.7rem 0 1rem 0',width:'103%', whiteSpace:'pre-line'}}>
+            <p onClick={() => handleOpenModal(_id)} style={{textAlign: 'left', margin: '-.7rem 0 1rem 0',width:'103%', whiteSpace:'pre-line', wordWrap: 'break-word', overflowWrap: 'break-word'}}>
             {query === '' ? content.description : (
               content.description.split(' ').map(word => 
                 word.toLowerCase().includes(query.toLowerCase()) ? 
@@ -509,7 +507,7 @@ let i = 0;
         </p>
             {
               content.link.split('\n').map((link)=> {
-                return <a href={link} target="_blank" rel="noreferrer" style={{left: 0, color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{link}</a>
+                return <a href={link} target="_blank" rel="noreferrer" style={{textAlign: 'justify', fontWeight: 'bold', color: 'Blue', textDecoration: 'none', display: 'inline-block', maxWidth: '100%', whiteSpace: 'pre-line', wordWrap: 'break-word', overflowWrap: 'break-word'}}>{link}</a>
               })
             }
             <div style={{textAlign: 'center'}}>

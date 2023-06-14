@@ -253,7 +253,7 @@ function Home(props) {
                 word + ' '
               )
             )}</h2>
-            <p onClick={() => handleOpenModal(contentLength - index - 1)} style={{textAlign: 'justify', margin: '1rem 0 1rem 0',width:'100%', whiteSpace:'pre-line'}}>
+            <p onClick={() => handleOpenModal(contentLength - index - 1)} style={{textAlign: 'left', margin: '1rem 0 1rem 0',width:'100%', whiteSpace:'pre-line', wordWrap: 'break-word', overflowWrap: 'break-word'}}>
             {query === '' ? content.description : (
               content.description.split(' ').map(word => 
                 word.toLowerCase().includes(query.toLowerCase()) ? 
@@ -264,7 +264,7 @@ function Home(props) {
         </p>
            {
               content.link.split('\n').map((link)=> {
-                return <a href={link} target="_blank" rel="noreferrer" style={{left: 0, color: 'Blue', textDecoration: 'none', width:'auto', marginRight:'1rem 1rem 1rem 1rem', whiteSpace:'pre-line'}}>{link}</a>
+                return <a href={link} target="_blank" rel="noreferrer" style={{textAlign: 'justify', fontWeight: 'bold', color: 'Blue', textDecoration: 'none', display: 'inline-block', maxWidth: '100%', whiteSpace: 'pre-line', wordWrap: 'break-word', overflowWrap: 'break-word'}}>{link}</a>
               })
             }
             <div style={{textAlign: 'center'}}>

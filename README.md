@@ -15,7 +15,6 @@ The purpose of TextUp is to offer users a reliable platform for capturing and or
 - Search Functionality: TextUp includes a search feature that allows users to search for notes based on their headings and text content, enabling quick retrieval of specific information.
 - Profile Customization: Users have the option to personalize their profile by adding a profile image. However, profile images are stored locally and need to be set again if the app is uninstalled or data is cleared.
 
-
 ## Getting Started
 
 To get started with TextUp, simply download the Android application from the GitHub repository and install it on your Android device. Alternatively, you can visit the TextUp website and access your notes using the web interface.
