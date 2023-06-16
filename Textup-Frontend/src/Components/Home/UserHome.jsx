@@ -1,5 +1,5 @@
-import React from 'react'
-import './Home.css'
+import React from 'react';
+import './Home.css';
 import Avatar from '@mui/material/Avatar';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -23,7 +23,10 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import IconButton from '@material-ui/core/IconButton';
 import load from '../../img/load.gif';
 import CTA from './CTA';
-
+import { useQuery } from 'react-query'
+import { none } from '@cloudinary/url-gen/qualifiers/fontHinting';
+import ReactPullToRefresh from 'react-pull-to-refresh';
+import refresh from '../../img/refresh.gif';
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
@@ -118,12 +121,11 @@ export default function UserHome(props) {
           setImage(null);
           setFileSize(null)
           setModalIsOpen(false);
-          updateNotesData();
-          // window.location.reload(true);
+          refetch();
         });
 };
 
-const updateNotesData = () => {
+const updateNotesData = async () => {
   fetch("http://localhost:5000/notesData", {
     method: "POST",
     crossDomain: true,
@@ -146,10 +148,12 @@ const updateNotesData = () => {
     });
 }
 
+const { refetch } = useQuery('notesData', updateNotesData);
+
 const [notesData, setNotesData] = useState([]);
       useEffect(() => {
-        updateNotesData();
-  }, []);
+        refetch();
+  }, [refetch]);
 
   // Remove Notes
   const removeNotes = (id) => {
@@ -170,7 +174,7 @@ const [notesData, setNotesData] = useState([]);
 
           deleteImage(imgPid);
           setOpenModalIndex2(null);
-          updateNotesData();
+          refetch();
         });        
   };
 
@@ -229,6 +233,7 @@ let i = 0;
   const [fileSize, setFileSize] = useState(null);
   const [showInput, setShowInput] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(false);
   const [setResponse] = useState("")
   const [showQuote, setShowQuote] = useState(false)
 
@@ -303,6 +308,15 @@ let i = 0;
     };
   }, []);
 
+  const handleRefesh = () => {
+    setIsPageLoading(true);
+    refetch(); 
+    // Simulating an asynchronous data fetching process
+    setTimeout(() => {
+      setIsPageLoading(false);
+    }, 3000); // Simulating a 2-second delay for data fetching, replace as needed
+  };
+
   return (
 <>
       <div>
@@ -346,7 +360,8 @@ let i = 0;
         <ControlPointRoundedIcon onClick={() => setModalIsOpen(true)} style={{fontSize:'3rem', flex:1000}}/>
         <ControlPointRoundedIcon onClick={() => setModalIsOpen(true)} style={{fontSize:'3rem', flex:1}}/>
       </Item>
-
+      {/* <CachedIcon onClick={handleRefesh} style={{zIndex:1000, position:'fixed', bottom: 10, right: 10, fontSize:'2rem', cursor:'pointer'}}/> */}
+      {isPageLoading? <img src={refresh} alt="loading" style={{zIndex:1000, position:'fixed', top: '51%', right:'48%', fontSize:'2rem', cursor:'pointer'}}/> : none}
       <div>
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description" ariaHideApp={false}>
   <Box style={{ width: '100rem', maxWidth: '100%', height: '100%', overflow: 'auto' }}>
@@ -422,9 +437,11 @@ let i = 0;
     {notesData.length === 0 && (
   <div style={{textAlign:'centre' ,borderRadius:'1rem', width:'90%', minWidth:'21rem', transform: 'translateY(30vh)', color:'GrayText'}}>
     {showQuote ? CTA[val].content : loader}
+    {showQuote ? loader : none}
   </div>
 )}
 </div>
+<ReactPullToRefresh  onRefresh={handleRefesh} className="your-own-class-if-you-want" style={{ textAlign: 'center' }}>
         {notesData.length > 0 && (
   <div style={{display: 'flex', flexDirection: 'column-reverse', gap:'.5rem'}}>
     {logged && notesData.filter(notes =>{
@@ -543,6 +560,7 @@ let i = 0;
       }
       </div>
 )}
+</ReactPullToRefresh>
       {notesData.length > 0 && (<h6 style={{color:'#ffffff', fontSize:'.1rem'}}>TextUp</h6>)}
       
       </Stack>

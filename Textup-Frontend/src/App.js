@@ -16,6 +16,9 @@ import Resetpassword from "./Components/Auth/resetpassword";
 import Resetmail from "./Components/Auth/resetmail";
 import ImageUpload from './Components/ImageUpload/imageUpload.';
 import AdminHome from './Components/Profile/AdminHome';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
   const [image, setImage] = useState("");
@@ -67,7 +70,7 @@ function App() {
         <Route exact path='/resetpassword' element={<Resetpassword />} />
         <Route exact path='/resetmail' element={<Resetmail />} />
         <Route exact path='/imageupload' element={<ImageUpload />} />
-        <Route exact path="/" element={logged ? <UserHome image={image} /> : <Home />}/>
+        <Route exact path="/" element={logged ?  <QueryClientProvider client={queryClient}><UserHome image={image} /></QueryClientProvider> : <Home />}/>
       </Routes>
     </div>
   );
