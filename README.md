@@ -228,3 +228,7 @@ Contributions are always welcome!
 - Be open to feedback and iterate on your changes if required.
 
 Happy contributing!
+
+##
+
+* [System Design Report](https://github.com/Pranav-Programmer/TextUp/files/11829731/System.Design.Report.for.TextUp.Notes.Taking.Application.pdf)
